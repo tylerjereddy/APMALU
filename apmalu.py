@@ -28,6 +28,9 @@ class AreaMolecule(object):
             print 'index:', index, 'of', self.centroids.shape[0]
             #print 'voronoi_region:', voronoi_region
             #print 'num vertices in voronoi region:', len(voronoi_region)
+            #exclude Voronoi vertices outside the diagram (can I safely do this?):
+            voronoi_region = np.array(voronoi_region)
+            voronoi_region = list(voronoi_region[voronoi_region != -1])
             voronoi_region_vertex_coords = vor_vertices[voronoi_region]
             #print 'voronoi_region_vertex_coords.shape:', voronoi_region_vertex_coords.shape
             try:
